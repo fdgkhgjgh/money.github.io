@@ -22,23 +22,22 @@ form.addEventListener('submit', async (event) => {
             formData.append('file', file);
             formData.append('comment',comment);
 
-            const response = await fetch('<https://asia-southeast1-github-website-445611.cloudfunctions.net/uploadFile>', { // Replace with your cloud function URL
+            const response = await fetch('https://asia-southeast1-github-website-445611.cloudfunctions.net/uploadFile', { // Replace with your cloud function URL
                 method: 'POST',
                 body: formData,
             });
 
-             if (response.ok) {
+            if (response.ok) {
                 const uploadResult = await response.text();
                 uploadStatus.innerHTML += `<br> ${uploadResult}`;
 
                 // Extract file name from response and generate a public link
                 const fileName = uploadResult.split("File uploaded successfully: ")[1].split(" with comment")[0];
-                const publicLink = `https://storage.googleapis.com/<money6666>/${fileName}`;
-
+                const publicLink = `https://storage.googleapis.com/gcf-v2-sources-45640842396-asia-southeast1/${fileName}`; //Replace with your bucket name
                  // Create the display element
                 const fileElement = document.createElement('div');
                 const commentText = uploadResult.split("with comment: ")[1];
-                  fileElement.innerHTML = `<a href="${publicLink}" target="_blank"> ${fileName} </a> <p>Comment: ${commentText}</p>`
+                  fileElement.innerHTML = `<a href="gcf-v2-sources-45640842396-asia-southeast1{publicLink}" target="_blank"> uploadFile{fileName} </a> <p>Comment: file{commentText}</p>`
                 uploadedFilesDiv.appendChild(fileElement);
              } else {
                 const errorMessage = await response.text();
