@@ -2,6 +2,7 @@ const form = document.getElementById('uploadForm');
 const fileInput = document.getElementById('fileInput');
 const commentInput = document.getElementById('comment');
 const uploadStatus = document.getElementById('uploadStatus');
+const uploadedFilesDiv = document.getElementById('uploadedFiles');
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -26,10 +27,20 @@ form.addEventListener('submit', async (event) => {
                 body: formData,
             });
 
-            if (response.ok) {
+             if (response.ok) {
                 const uploadResult = await response.text();
                 uploadStatus.innerHTML += `<br> ${uploadResult}`;
-            } else {
+
+                // Extract file name from response and generate a public link
+                const fileName = uploadResult.split("File uploaded successfully: ")[1].split(" with comment")[0];
+                const publicLink = `https://storage.googleapis.com/<uploadFile>/${fileName}`;
+
+                 // Create the display element
+                const fileElement = document.createElement('div');
+                const commentText = uploadResult.split("with comment: ")[1];
+                  fileElement.innerHTML = `<a href="${publicLink}" target="_blank"> ${fileName} </a> <p>Comment: ${commentText}</p>`
+                uploadedFilesDiv.appendChild(fileElement);
+             } else {
                 const errorMessage = await response.text();
                 uploadStatus.innerHTML += `<br> Error uploading ${file.name}: ${errorMessage}`;
             }
