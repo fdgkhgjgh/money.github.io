@@ -33,7 +33,7 @@ form.addEventListener('submit', async (event) => {
 
                 // Extract file name from response and generate a public link
                 const fileName = uploadResult.split("File uploaded successfully: ")[1].split(" with comment")[0];
-                const publicLink = `https://storage.googleapis.com/<uploadFile>/${fileName}`;
+                const publicLink = `https://storage.googleapis.com/<money6666>/${fileName}`;
 
                  // Create the display element
                 const fileElement = document.createElement('div');
