@@ -21,7 +21,7 @@ form.addEventListener('submit', async (event) => {
             formData.append('file', file);
             formData.append('comment',comment);
 
-            const response = await fetch('<YOUR_CLOUD_FUNCTION_URL>', { // Replace with your cloud function URL
+            const response = await fetch('<https://asia-southeast1-github-website-445611.cloudfunctions.net/uploadFile>', { // Replace with your cloud function URL
                 method: 'POST',
                 body: formData,
             });
