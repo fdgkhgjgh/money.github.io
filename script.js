@@ -37,7 +37,7 @@ form.addEventListener('submit', async (event) => {
                  // Create the display element
                 const fileElement = document.createElement('div');
                 const commentText = uploadResult.split("with comment: ")[1];
-                  fileElement.innerHTML = `<a href="gcf-v2-sources-45640842396-asia-southeast1{publicLink}" target="_blank"> uploadFile{fileName} </a> <p>Comment: file{commentText}</p>`
+                  fileElement.innerHTML = `<a href="gcf-v2-sources-45640842396-asia-southeast1" target="_blank"> uploadFile{fileName} </a> <p>Comment: file{commentText}</p>`
                 uploadedFilesDiv.appendChild(fileElement);
              } else {
                 const errorMessage = await response.text();
