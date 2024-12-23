@@ -33,7 +33,7 @@ form.addEventListener('submit', async (event) => {
 
                 // Extract file name from response and generate a public link
                 const fileName = uploadResult.split("File uploaded successfully: ")[1].split(" with comment")[0];
-                const publicLink = `https://storage.googleapis.com/gcf-v2-sources-45640842396-asia-southeast1/${fileName}`; //Replace with your bucket name
+                const publicLink = `https://storage.googleapis.com/gcf-v2-sources-45640842396-asia-southeast1/${uploadFile}`; //Replace with your bucket name
                  // Create the display element
                 const fileElement = document.createElement('div');
                 const commentText = uploadResult.split("with comment: ")[1];
